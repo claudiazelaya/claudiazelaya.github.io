@@ -20,6 +20,12 @@
 			background-color: teal;
 			font-size: 300%;
 			text-align: center;
+			background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVQWTZgIpZ7P14fWfvvOnYh8q_U4FoqFXTTrCpqGXNN39fbaa6OA");
+		}
+		body
+		{
+			background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVQWTZgIpZ7P14fWfvvOnYh8q_U4FoqFXTTrCpqGXNN39fbaa6OA");
+			background-size 100%, 100%;
 		}
 	</style>
 
@@ -45,18 +51,37 @@
 			boardWidth = $('.board').width();
 
 			// TODO 2
-
+            var position;
+            var points;
+            var speed;
+            var direction;
+            
+            
+            position = 0;
+            points = 0;
+            speed = 10;
+            direction = 1;
+            
+            box.css('left', position);     
+            box.text(points);              
 			
 			var update = function() {
 				// TODO 3 / 6 / 7 / 8
-				
+				position = position + (speed * direction);
+				box.css('left', position);
+				if (position > boardWidth) {
+				direction = -1;
+				} else if (position <= 0) {
+					direction = 1;
+				}
 			};
 
-
-			
 			var handleBoxClick = function() {
 				// TODO 4 / 5
-				
+				position = 0;
+				speed = speed + 3;
+				points = points + 1;
+				box.text (points);
 			};
 
 
